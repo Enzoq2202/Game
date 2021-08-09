@@ -5,6 +5,7 @@ import random
 from config import WIDTH, HEIGHT, INIT, GAME, QUIT
 from init_screen import init_screen
 from game_screen import game_screen
+from game_over import game_over
 
 
 pygame.init()
@@ -21,7 +22,7 @@ while state != QUIT:
     elif state == GAME:
         state = game_screen(window)
     else:
-        state = QUIT
+        state = game_over(window)
 
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados

@@ -4,7 +4,6 @@ from os import path
 IMG_DIR = path.join(path.dirname(__file__), 'assets', 'img')
 SND_DIR = path.join(path.dirname(__file__), 'assets', 'snd')
 FNT_DIR = path.join(path.dirname(__file__), 'assets', 'font')
-
 # Dados gerais do jogo.
 WIDTH = 480 # Largura da tela
 HEIGHT = 600 # Altura da tela

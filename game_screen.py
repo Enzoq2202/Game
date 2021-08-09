@@ -1,8 +1,9 @@
+import json
 import pygame
 from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED
 from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
 from sprites import Ship, Meteor, Bullet, Explosion
-
+from pontuacao import registro
 
 def game_screen(window):
     # Variável para o ajuste de velocidade
@@ -133,3 +134,4 @@ def game_screen(window):
         window.blit(text_surface, text_rect)
 
         pygame.display.update()  # Mostra o novo frame para o jogador
+    registro(score)
