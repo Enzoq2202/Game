@@ -8,7 +8,6 @@ def points():
 
 def registro(score):
     dic = points()
-    print(dic)
     dic['score_atual'] = score
     dic['recorde'].append(score)
     dic['recorde'].sort()
