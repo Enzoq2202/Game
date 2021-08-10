@@ -42,6 +42,7 @@ def init_screen(screen):
         pygame.display.flip()
     dt = 0
     instrucoes = pygame.image.load(path.join(IMG_DIR, 'instrucoes.png')).convert()
+    instrucoes = pygame.transform.scale(instrucoes, (WIDTH, int(HEIGHT/1.5)))
     while dt < 5000:
         t = clock.tick(FPS)
         dt+=t
