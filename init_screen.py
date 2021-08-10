@@ -37,10 +37,15 @@ def init_screen(screen):
         if contador > 40:
             pygame.draw.rect(screen, BLACK, pygame.Rect(0,HEIGHT/2,WIDTH,HEIGHT/2))
             contador = 0 if contador > 50 else contador
-        contador+=1
-        
+        contador+=1 
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
-
-    
+    dt = 0
+    instrucoes = pygame.image.load(path.join(IMG_DIR, 'instrucoes.png')).convert()
+    while dt < 5000:
+        t = clock.tick(FPS)
+        dt+=t
+        screen.fill((33,33,33))
+        screen.blit(instrucoes,(0,HEIGHT/2 - instrucoes.get_height()/2))
+        pygame.display.flip()
     return state
