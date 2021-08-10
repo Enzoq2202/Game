@@ -1,8 +1,8 @@
-import json
 import pygame
+import random
 from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED
 from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
-from sprites import Ship, Meteor, Bullet, Explosion
+from sprites import Ship, Meteor, Bullet, Explosion,PurpleMeteor
 from pontuacao import registro
 
 def game_screen(window):
@@ -25,7 +25,10 @@ def game_screen(window):
     all_sprites.add(player)
     # Criando os meteoros
     for i in range(8):
-        meteor = Meteor(assets)
+        if random.randint(1,10) == 1:
+            meteor = PurpleMeteor(assets)
+        else:
+            meteor = Meteor(assets)
         all_sprites.add(meteor)
         all_meteors.add(meteor)
 
@@ -106,7 +109,10 @@ def game_screen(window):
                 # Toca o som da colisão
                 assets[BOOM_SOUND].play()
                 player.kill()
-                lives -= 1
+                if any(meteor.__class__.__name__ == 'PurpleMeteor' for meteor in hits):
+                    lives-=2
+                else:
+                    lives -= 1
                 explosao = Explosion(player.rect.center, assets)
                 all_sprites.add(explosao)
                 state = EXPLODING
@@ -116,7 +122,7 @@ def game_screen(window):
         elif state == EXPLODING:
             now = pygame.time.get_ticks()
             if now - explosion_tick > explosion_duration:
-                if lives == 0:
+                if lives <= 0:
                     state = DONE
                 else:
                     state = PLAYING

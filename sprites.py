@@ -1,7 +1,7 @@
 import random
 import pygame
 from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT
-from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM
+from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM,PURPLE_METEOR_IMG
 
 
 class Ship(pygame.sprite.Sprite):
@@ -79,6 +79,13 @@ class Meteor(pygame.sprite.Sprite):
             self.rect.y = random.randint(-100, -METEOR_HEIGHT)
             self.speedx = random.randint(-3, 3)
             self.speedy = random.randint(2, 9)
+
+
+class PurpleMeteor(Meteor):
+    def __init__(self, assets):
+        super().__init__(assets)
+        self.image = assets[PURPLE_METEOR_IMG]
+    
 
 # Classe Bullet que representa os tiros
 class Bullet(pygame.sprite.Sprite):
