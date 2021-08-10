@@ -2,7 +2,7 @@ import pygame
 import random
 from os import path
 
-from config import IMG_DIR, BLACK, FPS, GAME, QUIT
+from config import IMG_DIR, BLACK, FPS, GAME, QUIT,HEIGHT,WIDTH
 
 
 def init_screen(screen):
@@ -14,6 +14,7 @@ def init_screen(screen):
     background_rect = background.get_rect()
 
     running = True
+    contador = 0
     while running:
 
         # Ajusta a velocidade do jogo.
@@ -33,8 +34,13 @@ def init_screen(screen):
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
         screen.blit(background, background_rect)
-
+        if contador > 40:
+            pygame.draw.rect(screen, BLACK, pygame.Rect(0,HEIGHT/2,WIDTH,HEIGHT/2))
+            contador = 0 if contador > 50 else contador
+        contador+=1
+        
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
 
+    
     return state
