@@ -4,6 +4,7 @@ from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED
 from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
 from sprites import Ship, Meteor, Bullet, Explosion,PurpleMeteor
 from pontuacao import registro
+from itertools import cycle
 
 def game_screen(window):
     # Variável para o ajuste de velocidade
@@ -40,6 +41,7 @@ def game_screen(window):
     keys_down = {}
     score = 0
     lives = 3
+    ciclo = cycle(range(0,HEIGHT))
 
     # ===== Loop principal =====
     pygame.mixer.music.play(loops=-1)
@@ -131,7 +133,9 @@ def game_screen(window):
 
         # ----- Gera saídas
         window.fill(BLACK)  # Preenche com a cor branca
-        window.blit(assets[BACKGROUND], (0, 0))
+        correcao_altura = next(ciclo)
+        window.blit(assets[BACKGROUND], (0, correcao_altura))
+        window.blit(assets[BACKGROUND], (0, correcao_altura - HEIGHT))   
         # Desenhando meteoros
         all_sprites.draw(window)
 
