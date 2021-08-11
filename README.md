@@ -9,3 +9,7 @@ Features:
 -Permitir movimento vertical (eixo y) da nave;
 -Adicionar um segundo tipo de meteoro que tira duas vidas ao invés de uma ao colidir com a nave;
 -Implementar fundo que se move infinitamente.
+
+-Funcionalidades criadas:
+
+-Efeito de game over no final do jogo

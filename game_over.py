@@ -41,3 +41,8 @@ def game_over(window):
         
         pygame.display.update()        
     return state
+
+
+def gameover_efeito():
+    gameover = pygame.mixer.Sound('Game/assets/snd/Music_Game_Over.ogg')
+    gameover.play()

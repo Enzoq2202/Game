@@ -5,6 +5,7 @@ from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FON
 from sprites import Ship, Meteor, Bullet, Explosion,PurpleMeteor
 from pontuacao import registro
 from itertools import cycle
+from game_over import gameover_efeito
 
 def game_screen(window):
     # Variável para o ajuste de velocidade
@@ -126,6 +127,8 @@ def game_screen(window):
             if now - explosion_tick > explosion_duration:
                 if lives <= 0:
                     state = DONE
+                    pygame.mixer.music.pause()
+                    gameover_efeito()
                 else:
                     state = PLAYING
                     player = Ship(groups, assets)
